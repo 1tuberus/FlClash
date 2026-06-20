@@ -42,10 +42,9 @@ class _CoreContainerState extends ConsumerState<CoreManager>
         ref.read(setupActionProvider.notifier).updateConfigDebounce();
       }
     });
-    ref.listenManual(appSettingProvider.select((state) => state.openLogs), (
-      prev,
-      next,
-    ) {
+    ref.listenManual(
+        appSettingProvider.select((state) => state.openLogs), (prev,
+        next,) {
       if (next) {
         coreController.startLog();
       } else {
@@ -72,7 +71,7 @@ class _CoreContainerState extends ConsumerState<CoreManager>
 
   @override
   void onLog(Log log) {
-    // ref.read(logsProvider.notifier).add(log);
+    ref.read(logsProvider.notifier).add(log);
     if (log.logLevel == LogLevel.error) {
       globalState.showNotifier(log.payload);
     }
@@ -102,7 +101,9 @@ class _CoreContainerState extends ConsumerState<CoreManager>
     if (ref.read(coreStatusProvider) != CoreStatus.connected) {
       return;
     }
-    ref.read(coreStatusProvider.notifier).value = CoreStatus.disconnected;
+    ref
+        .read(coreStatusProvider.notifier)
+        .value = CoreStatus.disconnected;
     if (WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
       context.showNotifier(message);
     }
