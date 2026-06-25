@@ -116,13 +116,12 @@ const mainIsolate = 'FlClashMainIsolate';
 const serviceIsolate = 'FlClashServiceIsolate';
 
 const defaultPrimaryColors = [
-  0xFF795548,
-  0xFF03A9F4,
-  0xFFFFFF00,
-  0XFFBBC9CC,
-  0XFFABD397,
   defaultPrimaryColor,
-  0XFF665390,
+  0xFF22D3EE,
+  0xFF665390,
+  0xFF03A9F4,
+  0xFF795548,
+  0xFFABD397,
 ];
 
 const scriptTemplate = '''
