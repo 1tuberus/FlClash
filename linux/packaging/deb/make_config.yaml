@@ -1,4 +1,4 @@
-display_name: FlClash
+display_name: EVO-X
 package_name: FlClash
 maintainer:
   name: chen08209
@@ -20,7 +20,7 @@ keywords:
   - ClashMeta
   - Proxy
 
-generic_name: FlClash
+generic_name: EVO-X
 
 categories:
   - Network

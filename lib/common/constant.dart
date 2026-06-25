@@ -9,7 +9,7 @@ import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/models/models.dart';
 import 'package:flutter/material.dart';
 
-const appName = 'FlClash';
+const appName = 'EVO-X';
 const appHelperService = 'FlClashHelperService';
 const coreName = 'clash.meta';
 const browserUa =
@@ -56,7 +56,7 @@ const localhost = '127.0.0.1';
 const clashConfigKey = 'clash_config';
 const configKey = 'config';
 const double dialogCommonWidth = 300;
-const repository = 'chen08209/FlClash';
+const repository = '1tuberus/FlClash';
 const defaultExternalController = '127.0.0.1:9090';
 const maxMobileWidth = 600;
 const maxLaptopWidth = 840;
@@ -102,7 +102,7 @@ const proxiesListStoreKey = PageStorageKey<String>('proxies_list');
 const toolsStoreKey = PageStorageKey<String>('tools');
 const profilesStoreKey = PageStorageKey<String>('profiles');
 
-const defaultPrimaryColor = 0XFFD8C0C3;
+const defaultPrimaryColor = 0XFF8B5CF6;
 
 double getWidgetHeight(num lines) {
   final space = 14.mAp;
