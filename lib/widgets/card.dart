@@ -145,7 +145,7 @@ class CommonCard extends StatelessWidget {
     return BorderSide(
       color: isSelected
           ? colorScheme.primary
-          : colorScheme.surfaceContainerHighest,
+          : colorScheme.primary.opacity30,
     );
   }
 

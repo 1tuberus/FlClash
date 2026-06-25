@@ -106,30 +106,55 @@ class _StartButtonState extends ConsumerState<StartButton>
                           )
                           .width +
                       16;
-            return FloatingActionButton(
-              clipBehavior: Clip.antiAlias,
-              materialTapTargetSize: MaterialTapTargetSize.padded,
-              heroTag: null,
-              onPressed: () {
-                handleSwitchStart();
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    height: 56,
-                    padding: EdgeInsets.only(
-                      left: 16,
-                      right: 16 - 8 * _animation.value,
-                    ),
-                    alignment: Alignment.centerLeft,
-                    child: AnimatedIcon(
-                      icon: AnimatedIcons.play_pause,
-                      progress: _animation,
-                    ),
+            return Container(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF8B5CF6), Color(0xFF22D3EE)],
+                ),
+                borderRadius: BorderRadius.circular(28),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x738B5CF6),
+                    blurRadius: 22,
+                    offset: Offset(0, 8),
                   ),
-                  SizedBox(width: textWidth * _animation.value, child: child!),
                 ],
+              ),
+              child: FloatingActionButton(
+                backgroundColor: Colors.transparent,
+                foregroundColor: Colors.white,
+                elevation: 0,
+                focusElevation: 0,
+                hoverElevation: 0,
+                highlightElevation: 0,
+                disabledElevation: 0,
+                shape: const StadiumBorder(),
+                clipBehavior: Clip.antiAlias,
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+                heroTag: null,
+                onPressed: () {
+                  handleSwitchStart();
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: 56,
+                      padding: EdgeInsets.only(
+                        left: 16,
+                        right: 16 - 8 * _animation.value,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      child: AnimatedIcon(
+                        icon: AnimatedIcons.play_pause,
+                        progress: _animation,
+                      ),
+                    ),
+                    SizedBox(width: textWidth * _animation.value, child: child!),
+                  ],
+                ),
               ),
             );
           },
@@ -139,7 +164,7 @@ class _StartButtonState extends ConsumerState<StartButton>
                   maxLines: 1,
                   overflow: TextOverflow.visible,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: context.colorScheme.onPrimaryContainer,
+                    color: Colors.white,
                   ),
                 )
               : Consumer(
@@ -152,7 +177,7 @@ class _StartButtonState extends ConsumerState<StartButton>
                       overflow: TextOverflow.visible,
                       style: Theme.of(context).textTheme.titleMedium?.toSoftBold
                           .copyWith(
-                            color: context.colorScheme.onPrimaryContainer,
+                            color: Colors.white,
                           ),
                     );
                   },
