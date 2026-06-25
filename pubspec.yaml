@@ -120,6 +120,9 @@ flutter:
     - family: Icons
       fonts:
         - asset: assets/fonts/Icons.ttf
+    - family: Orbitron
+      fonts:
+        - asset: assets/fonts/Orbitron.ttf
 flutter_intl:
   enabled: true
   class_name: AppLocalizations
@@ -130,7 +133,7 @@ flutter_launcher_icons:
   android: true
   min_sdk_android: 21
   adaptive_icon_background: "#0A0E1F"
-  adaptive_icon_foreground: "assets/images/icon/evox_icon_1024.png"
+  adaptive_icon_foreground: "assets/images/icon/evox_icon_foreground.png"
   ios: false
   macos:
     generate: true

@@ -164,6 +164,17 @@ class ApplicationState extends ConsumerState<Application> {
           theme: ThemeData(
             useMaterial3: true,
             pageTransitionsTheme: _pageTransitionsTheme,
+            textTheme: const TextTheme(
+              titleLarge: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.3,
+              ),
+              headlineSmall: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
             colorScheme: _getAppColorScheme(
               brightness: Brightness.light,
               primaryColor: themeProps.primaryColor,
@@ -172,6 +183,17 @@ class ApplicationState extends ConsumerState<Application> {
           darkTheme: ThemeData(
             useMaterial3: true,
             pageTransitionsTheme: _pageTransitionsTheme,
+            textTheme: const TextTheme(
+              titleLarge: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.3,
+              ),
+              headlineSmall: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
             colorScheme: _getAppColorScheme(
               brightness: Brightness.dark,
               primaryColor: themeProps.primaryColor,
