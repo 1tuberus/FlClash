@@ -235,6 +235,11 @@ class LineChartPainter extends CustomPainter {
       canvas.drawPath(fillPath, _fillPaint);
     }
 
+    _strokePaint.shader = const LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [Color(0xFF8B5CF6), Color(0xFF22D3EE)],
+    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
     canvas.drawPath(path, _strokePaint);
   }
 

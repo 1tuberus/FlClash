@@ -164,20 +164,11 @@ class ApplicationState extends ConsumerState<Application> {
           theme: ThemeData(
             useMaterial3: true,
             pageTransitionsTheme: _pageTransitionsTheme,
+            fontFamily: 'Exo 2',
             textTheme: const TextTheme(
-              titleLarge: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.3,
-              ),
-              titleMedium: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
-              ),
-              headlineSmall: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w800,
-              ),
+              titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+              titleMedium: TextStyle(fontWeight: FontWeight.w700),
+              headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
             colorScheme: _getAppColorScheme(
               brightness: Brightness.light,
@@ -186,22 +177,13 @@ class ApplicationState extends ConsumerState<Application> {
           ),
           darkTheme: ThemeData(
             useMaterial3: true,
-            scaffoldBackgroundColor: const Color(0xFF0A0E1F),
+            scaffoldBackgroundColor: const Color(0xFF0A0E15),
             pageTransitionsTheme: _pageTransitionsTheme,
+            fontFamily: 'Exo 2',
             textTheme: const TextTheme(
-              titleLarge: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.3,
-              ),
-              titleMedium: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
-              ),
-              headlineSmall: TextStyle(
-                fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w800,
-              ),
+              titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+              titleMedium: TextStyle(fontWeight: FontWeight.w700),
+              headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
             colorScheme: _getAppColorScheme(
               brightness: Brightness.dark,
