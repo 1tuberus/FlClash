@@ -253,7 +253,10 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
         title: context.appLocalizations.dashboard,
         actions: _buildActions(isEdit),
         floatingActionButton: const StartButton(),
-        body: Align(
+        body: Stack(
+          children: [
+            const Positioned.fill(child: _HudBackground()),
+            Align(
           alignment: Alignment.topCenter,
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16).copyWith(bottom: 88),
@@ -283,6 +286,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                     children: children,
                   ),
           ),
+            ),
+          ],
         ),
       ),
     );
@@ -380,4 +385,49 @@ class _AddedContainerState extends State<_AddedContainer> {
       ],
     );
   }
+}
+
+/// EVO-X HUD background: 32px cyan grid + radial purple glow (design contract).
+class _HudBackground extends StatelessWidget {
+  const _HudBackground();
+
+  @override
+  Widget build(BuildContext context) {
+    return const IgnorePointer(
+      child: CustomPaint(painter: _HudPainter(), size: Size.infinite),
+    );
+  }
+}
+
+class _HudPainter extends CustomPainter {
+  const _HudPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Radial purple glow at top-center: rgba(139,92,246,.18) -> transparent.
+    final glowRect = Rect.fromCircle(
+      center: Offset(size.width * 0.5, size.height * 0.03),
+      radius: size.width * 0.72,
+    );
+    final glowPaint = Paint()
+      ..shader = const RadialGradient(
+        colors: [Color(0x2E8B5CF6), Color(0x00060912)],
+      ).createShader(glowRect);
+    canvas.drawRect(Offset.zero & size, glowPaint);
+
+    // 32px cyan grid: rgba(34,211,238,.045).
+    final grid = Paint()
+      ..color = const Color(0x0B22D3EE)
+      ..strokeWidth = 1;
+    const step = 32.0;
+    for (double x = 0; x <= size.width; x += step) {
+      canvas.drawLine(Offset(x, 0), Offset(x, size.height), grid);
+    }
+    for (double y = 0; y <= size.height; y += step) {
+      canvas.drawLine(Offset(0, y), Offset(size.width, y), grid);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _HudPainter oldDelegate) => false;
 }

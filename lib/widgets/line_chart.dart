@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:fl_clash/common/color.dart';
 import 'package:flutter/material.dart';
 
 class Point {
@@ -201,10 +200,10 @@ class LineChartPainter extends CustomPainter {
     if (_cachedShader == null ||
         _cachedShaderSize != size ||
         _cachedShaderColor != color) {
-      final gradient = LinearGradient(
+      const gradient = LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        colors: [color.opacity38, color.opacity10],
+        colors: [Color(0x2922D3A3), Color(0x0022D3A3)],
       );
 
       const strokeWidth = 2.0;
@@ -235,11 +234,12 @@ class LineChartPainter extends CustomPainter {
       canvas.drawPath(fillPath, _fillPaint);
     }
 
-    _strokePaint.shader = const LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      colors: [Color(0xFF8B5CF6), Color(0xFF22D3EE)],
-    ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
+    // EVO-X: speed graph is ALWAYS green (#22D3A3) with neon drop-shadow glow — never purple.
+    _strokePaint
+      ..shader = null
+      ..color = const Color(0xFF22D3A3)
+      ..strokeWidth = 2.4
+      ..maskFilter = const MaskFilter.blur(BlurStyle.solid, 3);
     canvas.drawPath(path, _strokePaint);
   }
 

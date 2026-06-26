@@ -164,7 +164,7 @@ class ApplicationState extends ConsumerState<Application> {
           theme: ThemeData(
             useMaterial3: true,
             pageTransitionsTheme: _pageTransitionsTheme,
-            fontFamily: 'Exo 2',
+            fontFamily: 'Manrope',
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),
@@ -177,9 +177,9 @@ class ApplicationState extends ConsumerState<Application> {
           ),
           darkTheme: ThemeData(
             useMaterial3: true,
-            scaffoldBackgroundColor: const Color(0xFF0A0E15),
+            scaffoldBackgroundColor: const Color(0xFF060912),
             pageTransitionsTheme: _pageTransitionsTheme,
-            fontFamily: 'Exo 2',
+            fontFamily: 'Manrope',
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),

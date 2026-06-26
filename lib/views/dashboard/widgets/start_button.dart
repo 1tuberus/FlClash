@@ -112,7 +112,7 @@ class _StartButtonState extends ConsumerState<StartButton>
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF7C3AED), Color(0xFF22D3EE)],
+                  colors: [Color(0xFF8B5CF6), Color(0xFF22D3EE)],
                 ),
                 borderRadius: BorderRadius.circular(28),
                 boxShadow: const [
