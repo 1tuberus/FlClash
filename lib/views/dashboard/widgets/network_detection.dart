@@ -101,8 +101,7 @@ class _NetworkDetectionState extends ConsumerState<NetworkDetection> {
                       ? TooltipText(
                           text: Text(
                             ipInfo.ip,
-                            style: context.textTheme.bodyMedium?.toLight
-                                .adjustSize(1),
+                            style: evoxNumberStyle(size: 16),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),

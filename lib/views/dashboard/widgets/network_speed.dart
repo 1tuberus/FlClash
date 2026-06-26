@@ -67,9 +67,7 @@ class _NetworkSpeedState extends State<NetworkSpeed> {
                         const SizedBox(width: 8),
                         Text(
                           _getLastTraffic(traffics).speedText,
-                          style: context.textTheme.bodySmall?.copyWith(
-                            color: color,
-                          ),
+                          style: evoxNumberStyle(size: 12, color: color),
                         ),
                       ],
                     ),

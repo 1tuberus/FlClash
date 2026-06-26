@@ -70,6 +70,22 @@ class EvoxIcons {
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M7 13l5 5 5-5"/></svg>';
 }
 
+/// EVO-X: tech numeric style — Orbitron (the same font as the connect-pill
+/// timer), bold and white by default. Use for every digit value (IPs, speeds,
+/// traffic, memory). Orbitron covers Latin + digits only, which is all these
+/// values contain.
+TextStyle evoxNumberStyle({
+  double size = 15,
+  FontWeight weight = FontWeight.w700,
+  Color color = const Color(0xFFFFFFFF),
+}) => TextStyle(
+  fontFamily: 'Orbitron',
+  fontWeight: weight,
+  fontSize: size,
+  color: color,
+  letterSpacing: 0.2,
+);
+
 /// Renders an [EvoxIcons] SVG string at [size], tinted to [color]. When
 /// [color] is null it falls back to the ambient [IconTheme] colour (so
 /// nav-bar selection states work) and finally to the brand accent.

@@ -77,14 +77,15 @@ class _MemoryInfoState extends State<MemoryInfo> {
                         children: [
                           Text(
                             traffic.value,
-                            style: context.textTheme.bodyMedium?.toLight
-                                .adjustSize(1),
+                            style: evoxNumberStyle(size: 15),
                           ),
                           const SizedBox(width: 8),
                           Text(
                             traffic.unit,
-                            style: context.textTheme.bodyMedium?.toLight
-                                .adjustSize(1),
+                            style: evoxNumberStyle(
+                              size: 13,
+                              color: const Color(0xFF7B8398),
+                            ),
                           ),
                         ],
                       );

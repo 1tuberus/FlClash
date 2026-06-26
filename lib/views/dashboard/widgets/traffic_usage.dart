@@ -31,7 +31,7 @@ class TrafficUsage extends StatelessWidget {
                 flex: 1,
                 child: Text(
                   trafficValue.traffic.value,
-                  style: context.textTheme.bodySmall,
+                  style: evoxNumberStyle(size: 14),
                   maxLines: 1,
                 ),
               ),
@@ -40,7 +40,7 @@ class TrafficUsage extends StatelessWidget {
         ),
         Text(
           trafficValue.traffic.unit,
-          style: context.textTheme.bodySmall?.toLighter,
+          style: evoxNumberStyle(size: 12, color: const Color(0xFF7B8398)),
         ),
       ],
     );
