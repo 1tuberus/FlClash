@@ -49,9 +49,10 @@ class TrafficUsage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = context.appLocalizations;
-    // EVO-X brand doughnut: violet upload, lighter violet download.
+    // EVO-X brand doughnut: violet upload (↑), green download (↓) — matching
+    // the traffic arrows below it.
     const primaryColor = Color(0xFF8B5CF6);
-    const secondaryColor = Color(0xFFA78BFA);
+    const secondaryColor = Color(0xFF22D3A3);
     return SizedBox(
       height: getWidgetHeight(2),
       child: RepaintBoundary(
