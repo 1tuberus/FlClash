@@ -134,19 +134,15 @@ class CommonCard extends StatelessWidget {
     if (type == CommonCardType.filled) {
       return BorderSide.none;
     }
-    final hoverColor = isSelected
-        ? colorScheme.primary.opacity80
-        : colorScheme.primary.opacity60;
+    // EVO-X: brand neon border (hardcoded #8B5CF6 — Material3 remaps primary to a pale tint).
     if (states.contains(WidgetState.hovered) ||
         states.contains(WidgetState.focused) ||
         states.contains(WidgetState.pressed)) {
-      return BorderSide(color: hoverColor);
+      return const BorderSide(width: 1.4, color: Color(0xCC8B5CF6));
     }
     return BorderSide(
-      width: 1.4,
-      color: isSelected
-          ? colorScheme.primary
-          : colorScheme.primary.opacity60,
+      width: isSelected ? 1.6 : 1.0,
+      color: isSelected ? const Color(0xE6A78BFA) : const Color(0x4D8B5CF6),
     );
   }
 
@@ -168,10 +164,11 @@ class CommonCard extends StatelessWidget {
       }
       return colorScheme.surfaceContainerHigh;
     }
+    // EVO-X: glassy dark navy surface (design rgba(17,24,39,.55)); selected = deep violet.
     if (isSelected) {
-      return colorScheme.secondaryContainer;
+      return const Color(0xE64B3A96);
     }
-    return colorScheme.surfaceContainerLow;
+    return const Color(0x8C111827);
   }
 
   Color? _buildForegroundColor(BuildContext context) {
@@ -233,7 +230,7 @@ class CommonCard extends StatelessWidget {
               shape:
                   shape ??
                   RoundedSuperellipseBorder(
-                    borderRadius: BorderRadius.circular(radius ?? 14),
+                    borderRadius: BorderRadius.circular(radius ?? 16),
                   ),
               iconSize: 20,
               iconColor: _buildIconColor(context),
@@ -260,7 +257,7 @@ class CommonCard extends StatelessWidget {
               shape:
                   shape ??
                   RoundedSuperellipseBorder(
-                    borderRadius: BorderRadius.circular(radius ?? 14),
+                    borderRadius: BorderRadius.circular(radius ?? 16),
                   ),
               iconSize: 20,
               iconColor: _buildIconColor(context),
@@ -277,9 +274,26 @@ class CommonCard extends StatelessWidget {
       ),
     };
 
+    // EVO-X: subtle neon halo around plain cards (filled cards stay flat).
+    final glowed = type == CommonCardType.filled
+        ? card
+        : DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(radius ?? 16),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x1F8B5CF6),
+                  blurRadius: 18,
+                  spreadRadius: -3,
+                ),
+              ],
+            ),
+            child: card,
+          );
+
     return switch (enterAnimated) {
-      true => FadeScaleEnterBox(child: card),
-      false => card,
+      true => FadeScaleEnterBox(child: glowed),
+      false => glowed,
     };
   }
 }

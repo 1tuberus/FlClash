@@ -49,8 +49,9 @@ class TrafficUsage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appLocalizations = context.appLocalizations;
-    final primaryColor = globalState.theme.darken3PrimaryContainer;
-    final secondaryColor = globalState.theme.darken2SecondaryContainer;
+    // EVO-X brand doughnut: violet upload, lighter violet download.
+    const primaryColor = Color(0xFF8B5CF6);
+    const secondaryColor = Color(0xFFA78BFA);
     return SizedBox(
       height: getWidgetHeight(2),
       child: RepaintBoundary(
