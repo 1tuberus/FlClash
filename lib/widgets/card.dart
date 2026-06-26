@@ -143,9 +143,10 @@ class CommonCard extends StatelessWidget {
       return BorderSide(color: hoverColor);
     }
     return BorderSide(
+      width: 1.4,
       color: isSelected
           ? colorScheme.primary
-          : colorScheme.primary.opacity30,
+          : colorScheme.primary.opacity60,
     );
   }
 

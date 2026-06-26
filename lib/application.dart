@@ -167,12 +167,16 @@ class ApplicationState extends ConsumerState<Application> {
             textTheme: const TextTheme(
               titleLarge: TextStyle(
                 fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
                 letterSpacing: 0.3,
+              ),
+              titleMedium: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w700,
               ),
               headlineSmall: TextStyle(
                 fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w800,
               ),
             ),
             colorScheme: _getAppColorScheme(
@@ -182,16 +186,21 @@ class ApplicationState extends ConsumerState<Application> {
           ),
           darkTheme: ThemeData(
             useMaterial3: true,
+            scaffoldBackgroundColor: const Color(0xFF0A0E1F),
             pageTransitionsTheme: _pageTransitionsTheme,
             textTheme: const TextTheme(
               titleLarge: TextStyle(
                 fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
                 letterSpacing: 0.3,
+              ),
+              titleMedium: TextStyle(
+                fontFamily: 'Orbitron',
+                fontWeight: FontWeight.w700,
               ),
               headlineSmall: TextStyle(
                 fontFamily: 'Orbitron',
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w800,
               ),
             ),
             colorScheme: _getAppColorScheme(
