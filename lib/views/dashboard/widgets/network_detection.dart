@@ -82,9 +82,9 @@ class _NetworkDetectionState extends ConsumerState<NetworkDetection> {
                           cancelable: false,
                         );
                       },
-                      icon: Icon(
+                      icon: EvoxIcon(
+                        EvoxIcons.info,
                         size: 16.ap,
-                        Icons.info_outline,
                         color: context.colorScheme.onSurfaceVariant,
                       ),
                     ),

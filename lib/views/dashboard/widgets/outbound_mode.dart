@@ -37,7 +37,7 @@ class OutboundMode extends StatelessWidget {
               onPressed: () {},
               info: Info(
                 label: appLocalizations.outboundMode,
-                iconData: Icons.call_split_sharp,
+                icon: const EvoxIcon(EvoxIcons.branch, size: 20),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(top: 12, bottom: 12),

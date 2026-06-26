@@ -11,6 +11,7 @@ export 'disabled_mask.dart';
 export 'dismissible.dart';
 export 'donut_chart.dart';
 export 'effect.dart';
+export 'evox_icons.dart';
 export 'fade_box.dart';
 export 'float_layout.dart';
 export 'grid.dart';

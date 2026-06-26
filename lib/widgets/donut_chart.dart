@@ -186,6 +186,16 @@ class DonutChartPainter extends CustomPainter {
 
     _arcPaint.strokeWidth = strokeWidth;
 
+    final rect = Rect.fromCircle(center: center, radius: radius);
+
+    // EVO-X: faint track ring under the coloured arcs (design rgba(255,255,255,.08)).
+    final trackPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..color = const Color(0x14FFFFFF);
+    canvas.drawArc(rect, -pi / 2, 2 * pi, false, trackPaint);
+
+    double? lastEndAngle;
     for (final item in data) {
       final sweepAngle = availableAngle * (item.value * totalInv);
 
@@ -193,15 +203,30 @@ class DonutChartPainter extends CustomPainter {
 
       _arcPaint.color = item.color;
 
-      canvas.drawArc(
-        Rect.fromCircle(center: center, radius: radius),
-        startAngle,
-        sweepAngle,
-        false,
-        _arcPaint,
-      );
+      canvas.drawArc(rect, startAngle, sweepAngle, false, _arcPaint);
 
+      lastEndAngle = startAngle + sweepAngle;
       startAngle += sweepAngle + gapAngle;
+    }
+
+    // EVO-X: glowing "handle" dot at the leading end of the arc.
+    if (lastEndAngle != null) {
+      final dotCenter = Offset(
+        center.dx + radius * cos(lastEndAngle),
+        center.dy + radius * sin(lastEndAngle),
+      );
+      canvas.drawCircle(
+        dotCenter,
+        strokeWidth * 0.95,
+        Paint()
+          ..color = const Color(0x66A78BFA)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+      );
+      canvas.drawCircle(
+        dotCenter,
+        strokeWidth * 0.62,
+        Paint()..color = const Color(0xFFA78BFA),
+      );
     }
   }
 

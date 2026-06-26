@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:defer_pointer/defer_pointer.dart';
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/providers/providers.dart';
@@ -74,17 +73,9 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                         iconSize: 20,
                         padding: EdgeInsets.zero,
                         style: IconButton.styleFrom(
-                          backgroundColor: Colors.green.harmonizeWith(
-                            context.colorScheme.primary,
-                          ),
-                          foregroundColor: switch (Theme.brightnessOf(
-                            context,
-                          )) {
-                            Brightness.light =>
-                              context.colorScheme.onSurfaceVariant,
-                            Brightness.dark =>
-                              context.colorScheme.onPrimaryFixedVariant,
-                          },
+                          // EVO-X: connected = bright brand green (#22D3A3).
+                          backgroundColor: const Color(0xFF22D3A3),
+                          foregroundColor: Colors.white,
                         ),
                         onPressed: _handleConnection,
                         icon: const Icon(Icons.check, fontWeight: FontWeight.w900),
@@ -95,21 +86,17 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                         style: FilledButton.styleFrom(
                           visualDensity: VisualDensity.compact,
                           padding: const EdgeInsets.symmetric(horizontal: 12),
+                          // EVO-X: branded pills — connecting = dark violet,
+                          // connected = brand green, disconnected = error red.
                           backgroundColor: switch (coreStatus) {
-                            CoreStatus.connecting => null,
-                            CoreStatus.connected => Colors.greenAccent,
+                            CoreStatus.connecting => const Color(0xFF241B45),
+                            CoreStatus.connected => const Color(0xFF22D3A3),
                             CoreStatus.disconnected =>
                               context.colorScheme.error,
                           },
                           foregroundColor: switch (coreStatus) {
-                            CoreStatus.connecting => null,
-                            CoreStatus.connected => switch (Theme.brightnessOf(
-                              context,
-                            )) {
-                              Brightness.light =>
-                                context.colorScheme.onSurfaceVariant,
-                              Brightness.dark => null,
-                            },
+                            CoreStatus.connecting => Colors.white,
+                            CoreStatus.connected => Colors.white,
                             CoreStatus.disconnected =>
                               context.colorScheme.onError,
                           },

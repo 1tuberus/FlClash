@@ -10,7 +10,10 @@ class Info {
   final String label;
   final IconData? iconData;
 
-  const Info({required this.label, this.iconData});
+  /// EVO-X: optional designer SVG glyph (takes precedence over [iconData]).
+  final Widget? icon;
+
+  const Info({required this.label, this.iconData, this.icon});
 }
 
 class InfoHeader extends StatelessWidget {
@@ -42,7 +45,17 @@ class InfoHeader extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                if (info.iconData != null) ...[
+                if (info.icon != null) ...[
+                  // EVO-X: designer header glyphs are brand accent (#a78bfa).
+                  IconTheme.merge(
+                    data: const IconThemeData(
+                      color: Color(0xFFA78BFA),
+                      size: 20,
+                    ),
+                    child: info.icon!,
+                  ),
+                  const SizedBox(width: 8),
+                ] else if (info.iconData != null) ...[
                   Icon(
                     info.iconData,
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -146,8 +159,20 @@ class CommonCard extends StatelessWidget {
     );
   }
 
+  // EVO-X: selected proxy/profile card gradient (design linear-gradient(145deg,
+  // #6d54c8, #4b3a96)) — painted by the wrapper DecoratedBox in [build].
+  static const _selectedGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFF6D54C8), Color(0xFF4B3A96)],
+  );
+
   Color? _buildBackgroundColor(BuildContext context) {
     final colorScheme = context.colorScheme;
+    // Selected (non-error) → transparent so the gradient wrapper shows through.
+    if (isSelected && !isError) {
+      return Colors.transparent;
+    }
     // if (isError) {
     //   if (type == CommonCardType.filled) {
     //     return isSelected
@@ -274,22 +299,41 @@ class CommonCard extends StatelessWidget {
       ),
     };
 
-    // EVO-X: subtle neon halo around plain cards (filled cards stay flat).
-    final glowed = type == CommonCardType.filled
-        ? card
-        : DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(radius ?? 16),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0x1F8B5CF6),
-                  blurRadius: 18,
-                  spreadRadius: -3,
-                ),
-              ],
+    // EVO-X: selected cards get the violet gradient + stronger halo; plain
+    // unselected cards get a subtle neon halo; filled unselected stay flat.
+    final Widget glowed;
+    if (isSelected && !isError) {
+      glowed = DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: _selectedGradient,
+          borderRadius: BorderRadius.circular(radius ?? 16),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x4D8B5CF6),
+              blurRadius: 24,
+              spreadRadius: -2,
             ),
-            child: card,
-          );
+          ],
+        ),
+        child: card,
+      );
+    } else if (type == CommonCardType.filled) {
+      glowed = card;
+    } else {
+      glowed = DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius ?? 16),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x1F8B5CF6),
+              blurRadius: 18,
+              spreadRadius: -3,
+            ),
+          ],
+        ),
+        child: card,
+      );
+    }
 
     return switch (enterAnimated) {
       true => FadeScaleEnterBox(child: glowed),

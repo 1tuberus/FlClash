@@ -12,7 +12,7 @@ class TrafficUsage extends StatelessWidget {
 
   Widget _buildTrafficDataItem(
     BuildContext context,
-    Icon icon,
+    Widget icon,
     num trafficValue,
   ) {
     return Row(
@@ -58,7 +58,7 @@ class TrafficUsage extends StatelessWidget {
         child: CommonCard(
           info: Info(
             label: appLocalizations.trafficUsage,
-            iconData: Icons.data_saver_off,
+            icon: const EvoxIcon(EvoxIcons.refresh, size: 20),
           ),
           onPressed: () {},
           child: Consumer(
@@ -184,16 +184,22 @@ class TrafficUsage extends StatelessWidget {
                     ),
                     _buildTrafficDataItem(
                       context,
-                      Icon(Icons.arrow_upward, color: primaryColor, size: 14),
+                      // EVO-X: upload arrow = brand violet.
+                      const EvoxIcon(
+                        EvoxIcons.arrowUp,
+                        size: 13,
+                        color: Color(0xFF8B5CF6),
+                      ),
                       upTotalTrafficValue,
                     ),
                     const SizedBox(height: 8),
                     _buildTrafficDataItem(
                       context,
-                      Icon(
-                        Icons.arrow_downward,
-                        color: secondaryColor,
-                        size: 14,
+                      // EVO-X: download arrow = brand green.
+                      const EvoxIcon(
+                        EvoxIcons.arrowDown,
+                        size: 13,
+                        color: Color(0xFF22D3A3),
                       ),
                       downTotalTrafficValue,
                     ),
