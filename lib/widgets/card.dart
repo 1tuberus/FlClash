@@ -142,7 +142,7 @@ class CommonCard extends StatelessWidget {
     }
     return BorderSide(
       width: isSelected ? 1.6 : 1.0,
-      color: isSelected ? const Color(0xE6A78BFA) : const Color(0x4D8B5CF6),
+      color: isSelected ? const Color(0xE6A78BFA) : const Color(0x298B5CF6),
     );
   }
 

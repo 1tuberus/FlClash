@@ -129,17 +129,19 @@ class _StartButtonState extends ConsumerState<StartButton>
                   builder: (_, ref, _) {
                     final runTime = ref.watch(runTimeProvider);
                     return SizedBox(
-                      width: 92,
+                      width: 116,
                       child: Text(
                         utils.getTimeText(runTime),
                         maxLines: 1,
+                        softWrap: false,
+                        overflow: TextOverflow.visible,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontFamily: 'Orbitron',
                           fontWeight: FontWeight.w700,
-                          fontSize: 18,
+                          fontSize: 16,
                           color: Colors.white,
-                          letterSpacing: 0.5,
+                          letterSpacing: 0,
                         ),
                       ),
                     );
