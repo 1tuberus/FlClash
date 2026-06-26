@@ -16,6 +16,37 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'pages/pages.dart';
 
+// EVO-X: brand-violet navigation (active pill + white selected glyph) for both
+// the bottom NavigationBar (narrow) and the left NavigationRail (wide/fold).
+const _evoxViolet = Color(0xFF8B5CF6);
+const _evoxNavDim = Color(0xFF7B8398);
+
+final _evoxNavBarTheme = NavigationBarThemeData(
+  indicatorColor: _evoxViolet,
+  iconTheme: WidgetStateProperty.resolveWith(
+    (states) => IconThemeData(
+      size: 24,
+      color: states.contains(WidgetState.selected)
+          ? Colors.white
+          : _evoxNavDim,
+    ),
+  ),
+  labelTextStyle: WidgetStateProperty.resolveWith(
+    (states) => TextStyle(
+      fontFamily: 'Manrope',
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+      color: states.contains(WidgetState.selected) ? _evoxViolet : _evoxNavDim,
+    ),
+  ),
+);
+
+const _evoxNavRailTheme = NavigationRailThemeData(
+  indicatorColor: _evoxViolet,
+  selectedIconTheme: IconThemeData(size: 24, color: Colors.white),
+  unselectedIconTheme: IconThemeData(size: 24, color: _evoxNavDim),
+);
+
 class Application extends ConsumerStatefulWidget {
   const Application({super.key});
 
@@ -168,8 +199,11 @@ class ApplicationState extends ConsumerState<Application> {
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),
+              titleSmall: TextStyle(fontWeight: FontWeight.w700),
               headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
+            navigationBarTheme: _evoxNavBarTheme,
+            navigationRailTheme: _evoxNavRailTheme,
             colorScheme: _getAppColorScheme(
               brightness: Brightness.light,
               primaryColor: themeProps.primaryColor,
@@ -183,8 +217,11 @@ class ApplicationState extends ConsumerState<Application> {
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),
+              titleSmall: TextStyle(fontWeight: FontWeight.w700),
               headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
+            navigationBarTheme: _evoxNavBarTheme,
+            navigationRailTheme: _evoxNavRailTheme,
             colorScheme: _getAppColorScheme(
               brightness: Brightness.dark,
               primaryColor: themeProps.primaryColor,

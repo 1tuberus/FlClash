@@ -535,22 +535,34 @@ ColorScheme genColorScheme(
     // if (globalState.corePalette != null) {
     //   return globalState.corePalette!.toColorScheme(brightness: brightness);
     // }
-    return ColorScheme.fromSeed(
-      seedColor:
-          globalState.corePalette
-              ?.toColorScheme(brightness: brightness)
-              .primary ??
-          globalState.accentColor,
-      brightness: brightness,
-      dynamicSchemeVariant: vm2.b,
+    return _evoxBrand(
+      ColorScheme.fromSeed(
+        seedColor:
+            globalState.corePalette
+                ?.toColorScheme(brightness: brightness)
+                .primary ??
+            globalState.accentColor,
+        brightness: brightness,
+        dynamicSchemeVariant: vm2.b,
+      ),
     );
   }
-  return ColorScheme.fromSeed(
-    seedColor: color ?? Color(vm2.a!),
-    brightness: brightness,
-    dynamicSchemeVariant: vm2.b,
+  return _evoxBrand(
+    ColorScheme.fromSeed(
+      seedColor: color ?? Color(vm2.a!),
+      brightness: brightness,
+      dynamicSchemeVariant: vm2.b,
+    ),
   );
 }
+
+// EVO-X: fromSeed derives a pale Material tone for `primary`; pin the exact
+// brand violet (#8B5CF6) so radios, indicators and accents match the design
+// (the gradient cards / doughnut already use this value directly).
+ColorScheme _evoxBrand(ColorScheme cs) => cs.copyWith(
+  primary: const Color(0xFF8B5CF6),
+  onPrimary: const Color(0xFFFFFFFF),
+);
 
 @riverpod
 Brightness currentBrightness(Ref ref) {
