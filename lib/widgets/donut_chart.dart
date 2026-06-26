@@ -175,27 +175,28 @@ class DonutChartPainter extends CustomPainter {
     if (total <= 0) return;
 
     final center = Offset(size.width / 2, size.height / 2);
-    final strokeWidth = 10.0.ap;
+    final strokeWidth = 14.0.ap;
     final radius = min(size.width / 2, size.height / 2) - strokeWidth / 2;
 
     final gapAngle = 2 * asin(strokeWidth * 1 / (2 * radius)) * 1.2;
     final availableAngle = 2 * pi - (data.length * gapAngle);
     final totalInv = 1.0 / total;
 
-    double startAngle = -pi / 2 + gapAngle / 2;
+    // Start at the top (12 o'clock); arcs sweep counter-clockwise like the
+    // designer gauge, with the glowing handle dot pinned at the top.
+    double startAngle = -pi / 2;
 
     _arcPaint.strokeWidth = strokeWidth;
 
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    // EVO-X: faint track ring under the coloured arcs (design rgba(255,255,255,.08)).
+    // EVO-X: visible dark track ring under the coloured arcs.
     final trackPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
-      ..color = const Color(0x14FFFFFF);
-    canvas.drawArc(rect, -pi / 2, 2 * pi, false, trackPaint);
+      ..color = const Color(0xFF2A2E3D);
+    canvas.drawArc(rect, 0, 2 * pi, false, trackPaint);
 
-    double? lastEndAngle;
     for (final item in data) {
       final sweepAngle = availableAngle * (item.value * totalInv);
 
@@ -203,31 +204,31 @@ class DonutChartPainter extends CustomPainter {
 
       _arcPaint.color = item.color;
 
-      canvas.drawArc(rect, startAngle, sweepAngle, false, _arcPaint);
+      canvas.drawArc(rect, startAngle, -sweepAngle, false, _arcPaint);
 
-      lastEndAngle = startAngle + sweepAngle;
-      startAngle += sweepAngle + gapAngle;
+      startAngle -= sweepAngle + gapAngle;
     }
 
-    // EVO-X: glowing "handle" dot at the leading end of the arc.
-    if (lastEndAngle != null) {
-      final dotCenter = Offset(
-        center.dx + radius * cos(lastEndAngle),
-        center.dy + radius * sin(lastEndAngle),
-      );
-      canvas.drawCircle(
-        dotCenter,
-        strokeWidth * 0.95,
-        Paint()
-          ..color = const Color(0x66A78BFA)
-          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
-      );
-      canvas.drawCircle(
-        dotCenter,
-        strokeWidth * 0.62,
-        Paint()..color = const Color(0xFFA78BFA),
-      );
-    }
+    // EVO-X: big glowing "handle" dot at the top (12 o'clock) — soft halo,
+    // bright lavender body, white highlight — matching the designer mockup.
+    final dotCenter = Offset(center.dx, center.dy - radius);
+    canvas.drawCircle(
+      dotCenter,
+      strokeWidth * 1.7,
+      Paint()
+        ..color = const Color(0x559B7DF6)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 9),
+    );
+    canvas.drawCircle(
+      dotCenter,
+      strokeWidth * 0.95,
+      Paint()..color = const Color(0xFFC4B5FD),
+    );
+    canvas.drawCircle(
+      dotCenter,
+      strokeWidth * 0.42,
+      Paint()..color = const Color(0xFFFFFFFF),
+    );
   }
 
   @override

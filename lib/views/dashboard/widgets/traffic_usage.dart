@@ -58,7 +58,7 @@ class TrafficUsage extends StatelessWidget {
         child: CommonCard(
           info: Info(
             label: appLocalizations.trafficUsage,
-            icon: const EvoxIcon(EvoxIcons.refresh, size: 20),
+            icon: const EvoxIcon(EvoxIcons.refresh, size: 22),
           ),
           onPressed: () {},
           child: Consumer(
@@ -187,7 +187,7 @@ class TrafficUsage extends StatelessWidget {
                       // EVO-X: upload arrow = brand violet.
                       const EvoxIcon(
                         EvoxIcons.arrowUp,
-                        size: 13,
+                        size: 15,
                         color: Color(0xFF8B5CF6),
                       ),
                       upTotalTrafficValue,
@@ -198,7 +198,7 @@ class TrafficUsage extends StatelessWidget {
                       // EVO-X: download arrow = brand green.
                       const EvoxIcon(
                         EvoxIcons.arrowDown,
-                        size: 13,
+                        size: 15,
                         color: Color(0xFF22D3A3),
                       ),
                       downTotalTrafficValue,

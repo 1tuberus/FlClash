@@ -562,6 +562,8 @@ ColorScheme genColorScheme(
 ColorScheme _evoxBrand(ColorScheme cs) => cs.copyWith(
   primary: const Color(0xFF8B5CF6),
   onPrimary: const Color(0xFFFFFFFF),
+  // Pure white primary text (seed-derived onSurface had a cool/blue tint).
+  onSurface: const Color(0xFFFFFFFF),
 );
 
 @riverpod

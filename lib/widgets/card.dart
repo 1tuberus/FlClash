@@ -70,7 +70,7 @@ class InfoHeader extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: context.colorScheme.onSurfaceVariant,
+                        color: context.colorScheme.onSurface,
                       ),
                     ),
                   ),

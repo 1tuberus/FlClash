@@ -53,7 +53,7 @@ class _MemoryInfoState extends State<MemoryInfo> {
       child: RepaintBoundary(
         child: CommonCard(
           info: Info(
-            icon: const EvoxIcon(EvoxIcons.chip, size: 20),
+            icon: const EvoxIcon(EvoxIcons.chip, size: 22),
             label: appLocalizations.memoryInfo,
           ),
           onPressed: () {

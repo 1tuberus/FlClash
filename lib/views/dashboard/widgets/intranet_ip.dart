@@ -16,7 +16,7 @@ class IntranetIP extends StatelessWidget {
       child: CommonCard(
         info: Info(
           label: appLocalizations.intranetIP,
-          icon: const EvoxIcon(EvoxIcons.monitor, size: 20),
+          icon: const EvoxIcon(EvoxIcons.monitor, size: 22),
         ),
         onPressed: () {},
         child: Container(

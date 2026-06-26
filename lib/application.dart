@@ -199,7 +199,7 @@ class ApplicationState extends ConsumerState<Application> {
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),
-              titleSmall: TextStyle(fontWeight: FontWeight.w700),
+              titleSmall: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
               headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
             navigationBarTheme: _evoxNavBarTheme,
@@ -217,7 +217,7 @@ class ApplicationState extends ConsumerState<Application> {
             textTheme: const TextTheme(
               titleLarge: TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
               titleMedium: TextStyle(fontWeight: FontWeight.w700),
-              titleSmall: TextStyle(fontWeight: FontWeight.w700),
+              titleSmall: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
               headlineSmall: TextStyle(fontWeight: FontWeight.w800),
             ),
             navigationBarTheme: _evoxNavBarTheme,

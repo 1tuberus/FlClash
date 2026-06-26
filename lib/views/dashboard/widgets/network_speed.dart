@@ -60,7 +60,7 @@ class _NetworkSpeedState extends State<NetworkSpeed> {
                             padding: EdgeInsets.zero,
                             info: Info(
                               label: appLocalizations.networkSpeed,
-                              icon: const EvoxIcon(EvoxIcons.clock, size: 20),
+                              icon: const EvoxIcon(EvoxIcons.clock, size: 22),
                             ),
                           ),
                         ),
