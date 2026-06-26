@@ -134,7 +134,8 @@ void main() {
     });
 
     test('laptop for medium width', () {
-      expect(utils.getViewMode(700).name, 'laptop');
+      // maxMobileWidth raised to 720 (phones use bottom-nav); laptop band is 721–840.
+      expect(utils.getViewMode(800).name, 'laptop');
     });
 
     test('desktop for large width', () {
