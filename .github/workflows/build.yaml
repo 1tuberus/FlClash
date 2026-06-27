@@ -41,21 +41,23 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # TEST/DEV = ANDROID ONLY (fast). Uncomment others only for a full release.
+          # FULL RELEASE = android + desktop (windows/linux/macos), stable channel.
+          # arm-special variants (windows-11-arm, ubuntu-24.04-arm) intentionally
+          # omitted — they need a Rust toolchain + master-channel Flutter (fragile).
           - platform: android
             os: ubuntu-latest
-          # - platform: windows
-          #   os: Windows-2022
-          #   arch: amd64
-          # - platform: linux
-          #   os: ubuntu-22.04
-          #   arch: amd64
-          # - platform: macos
-          #   os: macos-15-intel
-          #   arch: amd64
-          # - platform: macos
-          #   os: macos-latest
-          #   arch: arm64
+          - platform: windows
+            os: Windows-2022
+            arch: amd64
+          - platform: linux
+            os: ubuntu-22.04
+            arch: amd64
+          - platform: macos
+            os: macos-15-intel
+            arch: amd64
+          - platform: macos
+            os: macos-latest
+            arch: arm64
 
     steps:
       - name: Checkout
